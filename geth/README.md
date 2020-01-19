@@ -17,10 +17,7 @@ adduser --home /home/eth1 --disabled-password --gecos 'Ethereum 1' eth1
 Ubuntu has a repository for `geth`.  To install it run the following commands as root:
 
 ```
-cat >/etc/apt/sources.list.d/ethereum-ubuntu-ethereum-eoan.list <<EOCAT
-deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu eoan main
-EOCAT
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 2A518C819BE37D2C2031944D1C52189C923F6CA9
+add-apt-repository -y ppa:ethereum/ethereum
 apt update
 apt install -y geth
 ```
