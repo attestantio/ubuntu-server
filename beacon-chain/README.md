@@ -2,7 +2,7 @@
 
 This provides the details for setting up a user to run an Ethereum 2 `beacon-chain` node.
 
-These instructions are tested on Ubuntu 19.10 server with an amd64 architecture.  Results on other configurations may vary.
+These instructions are tested on Ubuntu 19.10 server with an x64 architecture.  Results on other configurations may vary.
 
 ## Set up an `eth2` user
 
