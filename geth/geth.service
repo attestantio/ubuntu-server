@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=eth1
-ExecStart=geth --goerli --rpc --rpcaddr=127.0.0.1 --rpcport=8545 --ws --wsaddr=127.0.0.1 --wsport=8546
+ExecStart=/usr/bin/geth --goerli --rpc --rpcaddr=127.0.0.1 --rpcport=8545 --ws --wsaddr=127.0.0.1 --wsport=8546
 
 [Install]
 WantedBy=multi-user.target
