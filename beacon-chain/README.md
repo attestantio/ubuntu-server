@@ -35,6 +35,8 @@ systemctl enable eth2-beacon-chain
 
 The `eth2-beacon-chain` service should be run as part of the overall `eth2` service, however if required it can be started and stopped using `systemctl start eth2-beacon-chain` and `systemctl stop eth2-beacon-chain`.
 
+> Note that `geth` should be fully synced before starting the beacon chain, otherwise it will not be able to find the Ethereum 2 deposit contract and so will not start properly.
+
 The status of the beacon chain service can be obtained with:
 
 ```
@@ -53,16 +55,16 @@ The output should be something like this:
    CGroup: /system.slice/eth2-beacon-chain.service
            └─32660 /home/eth2/bin/beacon-chain --web3provider=ws://localhost:8546/ --http-web3provider=http://localhost:8545/
 
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Starting beacon node" prefix=node version="Prysm
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Starting 8 services: [*p2p.Service *powchain.Ser
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Collecting metrics at endpoint" endpoint=":8080"
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="RPC-API listening on port" address="0.0.0.0:4000
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=warning msg="You are using an insecure gRPC connection! Pr
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Connected to eth1 proof-of-work chain" endpoint=
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Starting initial chain sync..." prefix=initial-s
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Waiting for enough suitable peers before syncing
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Blockchain data already exists in DB, initializi
-Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Node started p2p server" multiAddr="/ip4/148.251
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Starting beacon node" prefix=node version="Prysm
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Starting 8 services: [*p2p.Service *powchain.Ser
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Collecting metrics at endpoint" endpoint=":8080"
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="RPC-API listening on port" address="0.0.0.0:4000
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=warning msg="You are using an insecure gRPC connection! Pr
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Connected to eth1 proof-of-work chain" endpoint=
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Starting initial chain sync..." prefix=initial-s
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Waiting for enough suitable peers before syncing
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Blockchain data already exists in DB, initializi
+Jan 18 21:01:05 dev beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Node started p2p server" multiAddr="/ip4/148.251
 ```
 
 The important thing here is to confirm that the second line (Active) states 'active (running) since...' as this confirms that `beacon-chain` is running.  If it is not the log lines should provide some information as to why it is not running.

@@ -53,16 +53,16 @@ The output should be something like this:
    CGroup: /system.slice/eth2-validator.service
            └─32686 /home/validator/bin/validator
 
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
-Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
+Jan 18 21:13:08 dev validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation
 ```
 
 The important thing here is to confirm that the second line (Active) states 'active (running) since...' as this confirms that `validator` is running.  If it is not the log lines should provide some information as to why it is not running.
