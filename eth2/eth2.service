@@ -1,0 +1,11 @@
+[Unit]
+Description=Ethereum 2 service group
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,14 +1,15 @@
 [Unit]
 Description=Ethereum 2 Beacon chain
-After=network.target
+PartOf=eth2.service
+After=eth2.service
 StartLimitIntervalSec=0
 
 [Service]
 Type=simple
 Restart=always
-RestartSec=1
+RestartSec=5
 User=eth2
 ExecStart=/home/eth2/bin/beacon-chain --web3provider=ws://localhost:8546/ --http-web3provider=http://localhost:8545/
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=eth2.service

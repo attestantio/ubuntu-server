@@ -25,16 +25,17 @@ chown -R validator:validator /home/validator/bin
 
 ## Set up the `validator` service
 
-Copy the [validator.service](validator.service) file to the `/etc/systemd/system` directory.  Note that the `validator` binary takes a number of options; to change these edit the copied file and alter the arguments as appropriate on the `ExecStart` line.
+Copy the [eth2-validator.service](eth2-validator.service) file to the `/etc/systemd/system` directory.  Note that the `validator` binary takes a number of options; to change these edit the copied file and alter the arguments as appropriate on the `ExecStart` line.
 
-To start `validator`, and enable automatic restarts if the process stops, the beacon chain restarts, or the server reboots, run the following commands as root:
+To enable `eth2-validator`, and enable automatic restarts if the process stops or the server reboots, run the following command as root:
 
 ```
-systemctl enable validator
-systemctl start validator
+systemctl enable eth2-validator
 ```
 
-At this stage there should be a `validator` process running as the `validator` user.  To confirm, run the following command as root:
+The `eth2-validator` service should be run as part of the overall `eth2` service, however if required it can be started and stopped using `systemctl start eth2-validator` and `systemctl stop eth2-validator`.
+  
+The status of the beacon chain service can be obtained with:
 
 ```
 systemctl status validator
@@ -43,13 +44,13 @@ systemctl status validator
 The output should be something like this:
 
 ```
-● validator.service - Ethereum 2 Validator
-   Loaded: loaded (/etc/systemd/system/validator.service; enabled; vendor preset: enabled)
+● eth2-validator.service - Ethereum 2 Validator
+   Loaded: loaded (/etc/systemd/system/eth2-validator.service; enabled; vendor preset: enabled)
    Active: active (running) since Sat 2020-01-18 21:01:03 CET; 12min ago
  Main PID: 32686 (validator)
     Tasks: 18 (limit: 4915)
    Memory: 48.6M
-   CGroup: /system.slice/validator.service
+   CGroup: /system.slice/eth2-validator.service
            └─32686 /home/validator/bin/validator
 
 Jan 18 21:13:08 api validator[32686]: {"depositInclusionSlot":0,"level":"info","msg":"Waiting to be activated","positionInActivation

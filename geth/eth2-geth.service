@@ -1,0 +1,15 @@
+[Unit]
+Description=Ethereum 1 node
+PartOf=eth2.service
+After=eth2.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=eth1
+ExecStart=/usr/bin/geth --goerli --rpc --rpcaddr=127.0.0.1 --rpcport=8545 --ws --wsaddr=127.0.0.1 --wsport=8546
+
+[Install]
+WantedBy=eth2.service

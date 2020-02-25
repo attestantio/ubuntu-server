@@ -23,33 +23,34 @@ Once the binary has been built it can be found in the bazel installation in the 
 chown -R eth2:eth2 /home/eth2/bin
 ```
 
-## Set up the `beacon-chain` service
+## Set up the `eth2-beacon-chain` service
 
-Copy the [beacon-chain.service](beacon-chain.service) file to the `/etc/systemd/system` directory.  Note that the `beacon-chain` binary takes a number of options; to change these edit the copied file and alter the arguments as appropriate on the `ExecStart` line.
+Copy the [eth2-beacon-chain.service](eth2-beacon-chain.service) file to the `/etc/systemd/system` directory.  Note that the `beacon-chain` binary takes a number of options; to change these edit the copied file and alter the arguments as appropriate on the `ExecStart` line.
 
-To start `beacon-chain`, and enable automatic restarts if the process stops or the server reboots, run the following commands as root:
-
-```
-systemctl enable beacon-chain
-systemctl start beacon-chain
-```
-
-At this stage there should be a `beacon-chain` process running as the `eth2` user.  To confirm, run the following command as root:
+To enable `eth2-beacon-chain`, and enable automatic restarts if the process stops or the server reboots, run the following command as root:
 
 ```
-systemctl status beacon-chain
+systemctl enable eth2-beacon-chain
+```
+
+The `eth2-beacon-chain` service should be run as part of the overall `eth2` service, however if required it can be started and stopped using `systemctl start eth2-beacon-chain` and `systemctl stop eth2-beacon-chain`.
+
+The status of the beacon chain service can be obtained with:
+
+```
+systemctl status eth2-beacon-chain
 ```
 
 The output should be something like this:
 
 ```
-● beacon-chain.service - Ethereum 2 Beacon chain
-   Loaded: loaded (/etc/systemd/system/beacon-chain.service; enabled; vendor preset: enabled)
+● eth-beacon-chain.service - Ethereum 2 Beacon chain
+   Loaded: loaded (/etc/systemd/system/eth2-beacon-chain.service; enabled; vendor preset: enabled)
    Active: active (running) since Sat 2020-01-18 21:01:02 CET; 4s ago
  Main PID: 32660 (beacon-chain)
     Tasks: 21 (limit: 4915)
    Memory: 186.6M
-   CGroup: /system.slice/beacon-chain.service
+   CGroup: /system.slice/eth2-beacon-chain.service
            └─32660 /home/eth2/bin/beacon-chain --web3provider=ws://localhost:8546/ --http-web3provider=http://localhost:8545/
 
 Jan 18 21:01:05 api beacon-chain[32660]: time="2020-01-18 21:01:05" level=info msg="Starting beacon node" prefix=node version="Prysm

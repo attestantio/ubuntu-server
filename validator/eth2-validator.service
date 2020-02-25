@@ -1,15 +1,16 @@
 [Unit]
 Description=Ethereum 2 Validator
-After=beacon-chain.service
-Requires=beacon-chain.service
+PartOf=eth2.service
+After=eth2-beacon-chain.service
+Requires=eth2-beacon-chain.service
 StartLimitIntervalSec=0
 
 [Service]
 Type=simple
 Restart=always
-RestartSec=1
+RestartSec=5
 User=validator
 ExecStart=/home/validator/bin/validator
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=eth2.service

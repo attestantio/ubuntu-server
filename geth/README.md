@@ -22,18 +22,19 @@ apt update
 apt install -y geth
 ```
 
-## Set up the `geth` service
+## Set up the `eth2-geth` service
 
-Copy the [geth.service](geth.service) file to the `/etc/systemd/system` directory.  Note that the `geth` binary takes a number of options; to change these edit the copied file and alter the arguments as appropriate on the `ExecStart` line.
+Copy the [eth2-geth.service](eth2-geth.service) file to the `/etc/systemd/system` directory.  Note that the `geth` binary takes a number of options; to change these edit the copied file and alter the arguments as appropriate on the `ExecStart` line.
 
-To start `geth`, and enable automatic restarts if the process stops or the server reboots, run the following commands as root:
+To enable `eth2-geth`, and enable automatic restarts if the process stops or the server reboots, run the following command as root:
 
 ```
-systemctl enable geth
-systemctl start geth
+systemctl enable eth2-geth
 ```
 
-At this stage there should be a `geth` process running as the `eth1` user.  To confirm, run the following command as root:
+The `eth2-geth` service should be run as part of the overall `eth2` service, however if required it can be started and stopped using `systemctl start eth2-geth` and `systemctl stop eth2-geth`.
+
+The status of the Ethereum 1 node service can be obtained with:
 
 ```
 systemctl status geth
@@ -42,13 +43,13 @@ systemctl status geth
 The output should be something like this:
 
 ```
-● geth.service - Ethereum 1 node
-   Loaded: loaded (/etc/systemd/system/geth.service; enabled; vendor preset: enabled)
+● eth2-geth.service - Ethereum 1 node
+   Loaded: loaded (/etc/systemd/system/eth2-geth.service; enabled; vendor preset: enabled)
    Active: active (running) since Sun 2020-01-12 23:45:14 CET; 5 days ago
  Main PID: 8893 (geth)
     Tasks: 28 (limit: 4915)
    Memory: 2.4G
-   CGroup: /system.slice/geth.service
+   CGroup: /system.slice/eth2-geth.service
            └─8893 /usr/bin/geth --goerli --rpc --rpcaddr=127.0.0.1 --rpcport=8545 --ws --wsaddr=127.0.0.1 --wsport=8546
 
 Jan 18 20:41:28 api geth[8893]: INFO [01-18|20:41:28.082] Imported new chain segment               blocks=1 txs=6   mgas=2.030 elaps
