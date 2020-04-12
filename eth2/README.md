@@ -1,6 +1,6 @@
 # eth2
 
-This provides the details for etting up the group service to run all Ethereum 2 processes.
+This provides the details for setting up the group service to run all Ethereum 2 processes.
 
 These instructions are tested on Ubuntu 19.10 server with an x64 architecture.  Results on other configurations may vary.
 
